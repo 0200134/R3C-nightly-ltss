@@ -1,29 +1,59 @@
-# 🌙 R3C-nightly-ltss
-**Rust Long Term Support – Nightly Build Stream**
+
+```markdown
+# 🌙 R3C-nightly-ltss  
+**C++ → Rust → ASM Experimental LTS Channel**  
+> “Long-Term Sustain System for the R3C Ecosystem.”
 
 ---
 
-### 🧩 Overview
-`R3C-nightly-ltss` is the **nightly experimental branch** of the R3C ecosystem.  
-It explores *unstable, pre-LTS Rust features* while maintaining the R3C principle —  
-> “Build without LLVM.”
+## 🧱 Overview
+**R3C-nightly-ltss** is the **nightly experimental branch** of the [R3C ecosystem](https://github.com/0200134/r3c).  
+It focuses on verifying the full compiler chain:
 
-Nightly LTSS acts as the **testing ground** for compiler independence, ABI stability,  
-and Rust-to-C++/ASM pipeline evolution.
+```
 
----
+C++  →  Rust  →  ASM
 
-### ⚙️ Relation
-| Project | Description |
-|----------|-------------|
-| [R3C](https://github.com/0200134/r3c) | Core LLVM-free compiler |
-| [Rust-ltss](https://github.com/0200134/Rust-ltss) | Long-Term Stable Rust layer |
-| [R3C-Ecosystem](https://github.com/0200134/r3c-ecosystem) | Unified management of R3C stack |
+```
+
+This flow represents the **LLVM-free transpiler pipeline**:  
+from legacy systems (C++), through Rust (safe abstraction), down to assembly (bare metal).
 
 ---
 
-### 🧱 Philosophy
-Nightly doesn’t mean chaos —  
-it means *preparing tomorrow’s stability today.*
+## 🧩 Ecosystem Structure
+| Layer | Repository | Role |
+|--------|-------------|------|
+| 🧱 Core Compiler | [r3c](https://github.com/0200134/r3c) | Self-hosting C++ ↔ Rust transpiler |
+| 📦 Package Manager | [cpppm](https://github.com/0200134/cpppm) | C++ Package Layer |
+| 🌙 Nightly LTSS | **(This repo)** | Rust-to-ASM experimental channel |
 
-> 🪶 “From unstable code, comes the next decade’s foundation.”
+---
+
+## ⚙️ Goals
+- Validate **C++ → Rust → ASM** transpilation stability  
+- Benchmark **nightly ABI compatibility** across compilers  
+- Test **cross-platform NASM** pipelines  
+- Simulate **industrial LTSS** behavior for Rust ecosystems  
+
+---
+
+## 🔗 Links
+- [🪶 R3C Core](https://github.com/0200134/r3c)  
+- [📦 cpppm](https://github.com/0200134/cpppm)  
+- [🌙 R3C-nightly-ltss (You are here)](https://github.com/0200134/R3C-nightly-ltss)
+
+---
+
+## 🧾 License
+**MIT License**  
+Free for research, industrial testing, and redistribution.
+
+---
+
+> 🪶 *“From safety to metal, without LLVM.”*  
+> — R3C Ecosystem Philosophy
+```
+
+---
+
