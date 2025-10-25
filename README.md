@@ -1,5 +1,3 @@
-
-```markdown
 # 🌙 R3C-nightly-ltss  
 **C++ → Rust → ASM Experimental LTS Channel**  
 > “Long-Term Sustain System for the R3C Ecosystem.”
@@ -54,6 +52,4 @@ Free for research, industrial testing, and redistribution.
 > 🪶 *“From safety to metal, without LLVM.”*  
 > — R3C Ecosystem Philosophy
 ```
-
----
 
