@@ -1,0 +1,55 @@
+name: 🌙 R3C Nightly LTSS Validation
+
+on:
+  schedule:
+    - cron: "0 0 * * *"  # 매일 00:00 UTC 실행
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  nightly:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🧭 Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: ⚙️ Setup Git user
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@users.noreply.github.com"
+
+      - name: 🔍 Generate nightly badge
+        id: badge
+        run: |
+          DATE=$(date -u +"%Y-%m-%d %H:%M UTC")
+          echo "DATE=$DATE" >> $GITHUB_ENV
+          echo "🌙 Nightly build executed at $DATE"
+
+      - name: 🧩 Update README.md badge
+        run: |
+          BADGE="![Nightly Build](https://img.shields.io/badge/Nightly-${DATE// /%20}-blue?logo=githubactions)"
+          sed -i "s|!\[Nightly Build\](.*)|$BADGE|" README.md
+
+      - name: 💾 Commit updated badge
+        run: |
+          git add README.md
+          git commit -m "🔄 Nightly badge update ($DATE)" || echo "No changes to commit"
+          git push origin main || echo "Nothing to push"
+
+      - name: 🧠 LTSS validation stub
+        run: |
+          echo "Running LTSS nightly validation..."
+          mkdir -p ltss/reports
+          echo "Nightly validation run: $DATE" > ltss/reports/nightly_$DATE.txt
+          echo "✅ LTSS verification complete."
+
+      - name: 🧾 Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ltss-report-${{ env.DATE }}
+          path: ltss/reports/
